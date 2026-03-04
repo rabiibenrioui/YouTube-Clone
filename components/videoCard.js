@@ -1,9 +1,9 @@
-import { Text, View, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { Text, View, Image, TouchableOpacity, TouchableHighlight } from "react-native";
 import '../global.css';
 
 export default function ShortVideoCard({video}) {
     return (
-        <View className="p-2">
+        <TouchableOpacity className="p-2">
             {/* video thumbnail & duration */}
             <Image source={video.thumbnail} className="h-52 w-full rounded-lg" />
             <View className="flex items-end mr-2 mb-5 -mt-6" >
@@ -15,7 +15,7 @@ export default function ShortVideoCard({video}) {
             </View>
 
             {/* video title and info */}
-            <View className="flex-row justify-between items-center pb-5 space-x-3 mx-1.5 gap-2">
+            <View className="flex-row justify-between items-center pb-5 space-x-3 mx-1.5 gap-2.5">
                 <Image source={video.avatar} className="h-9 w-9 rounded-full" />
                 <View className="flex-1 space-y-1">
                     <Text className="text-white text-lg">
@@ -25,7 +25,14 @@ export default function ShortVideoCard({video}) {
                         {video.channelTitle} • {video.viewCount} • {video.publishedText}
                     </Text>
                 </View>
+                {/* 'more' menu icon */}
+                <View className="self-start mt-2.5 mr-1">
+                    <Image 
+                     source={require('../assets/icons/more.png')} 
+                     className="h-3 w-2"
+                     style={{ tintColor: 'silver' }} />
+                </View>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }

@@ -3,7 +3,7 @@ import '../global.css';
 
 export default function ShortVideoCard({item}) {
     return (
-        <View className="relative h-64 w-40 mr-3 flex justify-between">
+        <TouchableOpacity className="relative h-64 w-40 mr-3 flex justify-between">
             
             {/* thumbnail */}
             <Image 
@@ -11,12 +11,12 @@ export default function ShortVideoCard({item}) {
              className="h-full w-full rounded-xl absolute" />
             
             {/* 'more' menu buttons */}
-            <TouchableOpacity className="flex-row justify-end p-2.5">
+            <View className="flex-row justify-end p-2.5">
                 <Image 
                  source={require('../assets/icons/more.png')} 
                  className="h-4 w-2"
                  style={{ tintColor: 'white' }} />
-            </TouchableOpacity>
+            </View>
 
             {/* title & views count */}
             <View className="p-2">
@@ -34,7 +34,7 @@ export default function ShortVideoCard({item}) {
                 </Text>
 
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

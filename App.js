@@ -2,13 +2,17 @@ import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState } from 'react';
 import './global.css';
-import { categories, shortVideos, videos } from './constants/index';
+import { categories, shortVideos, videos, videos_2 } from './constants/index';
 import ShortVideoCard from './components/shortVideoCard';
-import VideoCard from './components/videoCard'
+import VideoCard from './components/videoCard';
 
 export default function HomeScreen() {
+  // setting the main category element
   const mainCategory = categories[0];
   const [activeCategory, setActiveCategory] = useState(mainCategory);
+
+  // navigation icon
+  const navigationIcon = require('./assets/icons/navigation.png')
 
   return (
     <View className="flex-1 bg-stone-900">
@@ -23,7 +27,15 @@ export default function HomeScreen() {
           source={require("./assets/icons/youtubeIcon.png")}
           className="h-6 w-9" />
 
-          <Text className="text-white font-bold text-3xl tracking-tighter">YouTube</Text>
+          <Text 
+          style={{
+            color: 'white',
+            fontSize: 28,
+            fontFamily: 'Roboto',
+            fontWeight: '700', 
+            letterSpacing: -2}}>
+            YouTube
+          </Text>
 
         </View>
 
@@ -61,7 +73,7 @@ export default function HomeScreen() {
               categories.map((category, index) => {
                 let isActive = category == activeCategory;
                 let textClass = isActive ? 'text-black' : 'text-white';
-
+              
                 return (
                   <TouchableOpacity 
                     onPress={() => setActiveCategory(category)}
@@ -77,10 +89,13 @@ export default function HomeScreen() {
           </ScrollView>
         </View>
 
+        {/* suggested videos */}
+        <VideoCard video={videos[3]} />
+
         {/* short videos */}
-        <View className="mt-2 mb-6 py-2 border-t-zinc-700 border-b-zinc-700 border-2 border-l-0 border-r-0">
+        <View className="mt-2 mb-6 py-4 border-t-zinc-700 border-b-zinc-700 border-2 border-l-0 border-r-0">
           
-          <View className="mx-4 flex-row items-center gap-1.5">
+          <View className="mx-4 flex-row items-center gap-2">
             <Image 
              source={require('./assets/icons/youtubeShorts.png')}
              className="h-7 w-6"/>
@@ -95,7 +110,7 @@ export default function HomeScreen() {
 
         </View>
 
-        {/* videos */}
+        {/* videos part 2*/}
         <ScrollView>
           {
             videos.map((video, index) => <VideoCard video={video} key={index}/>)

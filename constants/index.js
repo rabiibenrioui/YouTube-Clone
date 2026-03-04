@@ -114,3 +114,46 @@ export const videos = [
         avatar: require('../assets/avatars/designAvatar.jpg')
     }
 ]
+
+export const videos_2 = [
+    {
+        id: 1,
+        title: 'Final Race: Bugatti vs Fighter Jet',
+        channelTitle: 'Top Gear',
+        viewCount: '5.2M views',
+        duration: '24:51',
+        publishedText: '2 years ago',
+        thumbnail: require('../assets/videos/race.png'),
+        avatar: require('../assets/avatars/raceAvatar.jpg')
+    },
+    {
+        id: 2,
+        title: 'I Built the ULTIMATE Modern Setup',
+        channelTitle: 'Danny Toliver',
+        viewCount: '930K views',
+        duration: '14:32',
+        publishedText: '3 months ago',
+        thumbnail: require('../assets/videos/tech.png'),
+        avatar: require('../assets/avatars/techAvatar.jpg')
+    },
+    {
+        id: 3,
+        title: 'New PR Unlocked: Day in the life',
+        channelTitle: 'Cbum',
+        viewCount: '1.1M views',
+        duration: '19:44',
+        publishedText: '5 days ago',
+        thumbnail: require('../assets/videos/workout.png'),
+        avatar: require('../assets/avatars/workoutAvatar.jpg')
+    },
+    {
+        id: 4,
+        title: 'How do you Make a Car BEAUTIFUL',
+        channelTitle: 'Astro',
+        viewCount: '2.6M views',
+        duration: '09:36',
+        publishedText: '3 months ago',
+        thumbnail: require('../assets/videos/design.png'),
+        avatar: require('../assets/avatars/designAvatar.jpg')
+    }
+]
