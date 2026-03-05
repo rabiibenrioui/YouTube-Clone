@@ -30,6 +30,11 @@
     "web": {
       "bundler": "metro",
       "favicon": "./assets/icons/youtubeIcon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "8d838ef5-4907-4864-9e19-3932d4d8646a"
+      }
     }
   }
 }
