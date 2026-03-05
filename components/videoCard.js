@@ -1,4 +1,4 @@
-import { Text, View, Image, TouchableOpacity, TouchableHighlight } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
 import '../global.css';
 
 export default function VideoCard({video}) {
@@ -38,7 +38,8 @@ export default function VideoCard({video}) {
                     <Image 
                      source={require('../assets/icons/more.png')} 
                      className="h-3 w-2"
-                     style={{ tintColor: 'silver' }} />
+                     style={{ tintColor: 'silver' }}
+                     />
                 </View>
             </View>
         </TouchableOpacity>

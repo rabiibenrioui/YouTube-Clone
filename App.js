@@ -39,14 +39,17 @@ export default function HomeScreen() {
        style={{ opacity:fadeAnime }}
        className="flex-1 bg-black items-center justify-center"
       >
-        <Image source={require('./assets/icons/youtubeIcon.png')} className="h-16 w-16 mb-6" />
+        <Image 
+         source={require('./assets/icons/youtubeIcon.png')} 
+         className="h-16 w-16 mb-6" 
+         />
         <ActivityIndicator size="large" color="#FF0000" />
       </Animated.View>
     )
   }
 
   return (
-    <View className="flex-1 bg-stone-900">
+    <View className="flex-1 bg-zinc-900">
 
       {/* home logo and buttons */}
       <SafeAreaView className="flex-row justify-between p-4">
@@ -90,7 +93,7 @@ export default function HomeScreen() {
             <Image 
             source={require('./assets/icons/search.png')} 
             style={{ tintColor: 'white' }}
-            className="w-7 h-7" />
+            className="w-7 h-7" /> 
           </TouchableOpacity> 
         </View>
       </SafeAreaView>
@@ -129,7 +132,7 @@ export default function HomeScreen() {
           <View className="mx-4 flex-row items-center gap-2">
             <Image 
              source={require('./assets/icons/youtubeShorts.png')}
-             className="h-7 w-6"/>
+             className="h-7 w-6" />
             <Text className="text-white text-xl font-semibold tracking-tighter mx-2">Shorts</Text>
           </View>
 
