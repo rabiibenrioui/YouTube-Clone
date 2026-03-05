@@ -1,6 +1,6 @@
-import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, Image, TouchableOpacity, ScrollView, Animated, ActivityIndicator } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './global.css';
 import { categories, shortVideos } from './constants/index';
 import ShortVideoCard from './components/shortVideoCard.js';
@@ -18,6 +18,10 @@ export default function HomeScreen() {
   // setting the videos
   const [videos, setVideos] = useState([]);
 
+  // setting the load screen
+  const [loading, setLoading] = useState(true);
+  const fadeAnime = useRef(new Animated.Value(1)).current;
+
   // api data
   useEffect(() => {
     fetchData();
@@ -25,7 +29,20 @@ export default function HomeScreen() {
 
   const fetchData = async () => {
     const data = await fetchTrendingVideos();
+    setLoading(false);
     setVideos(data);
+  }
+
+  if(loading) {
+    return (
+      <Animated.View 
+       style={{ opacity:fadeAnime }}
+       className="flex-1 bg-black items-center justify-center"
+      >
+        <Image source={require('./assets/icons/youtubeIcon.png')} className="h-16 w-16 mb-6" />
+        <ActivityIndicator size="large" color="#FF0000" />
+      </Animated.View>
+    )
   }
 
   return (
