@@ -1,3 +1,4 @@
+export const rapidApiKey = 'b6bb12dc84mshd0b16eeac649dfcp1b8a60jsn9e86e48eb03a';
 // categories array
 export const categories = [
     'All',

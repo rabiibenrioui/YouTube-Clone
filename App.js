@@ -1,18 +1,32 @@
 import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './global.css';
-import { categories, shortVideos, videos, videos_2 } from './constants/index';
-import ShortVideoCard from './components/shortVideoCard';
-import VideoCard from './components/videoCard';
+import { categories, shortVideos } from './constants/index';
+import ShortVideoCard from './components/shortVideoCard.js';
+import VideoCard from './components/videoCard.js'
+import { fetchTrendingVideos } from './api/youtube';
 
 export default function HomeScreen() {
   // setting the main category element
   const mainCategory = categories[0];
   const [activeCategory, setActiveCategory] = useState(mainCategory);
 
-  // navigation icon
-  const navigationIcon = require('./assets/icons/navigation.png')
+  // generate a random number, for suggested video
+  const randomNum = Math.floor(Math.random() * 10);
+
+  // setting the videos
+  const [videos, setVideos] = useState([]);
+
+  // api data
+  useEffect(() => {
+    fetchData();
+  }, [])
+
+  const fetchData = async () => {
+    const data = await fetchTrendingVideos();
+    setVideos(data);
+  }
 
   return (
     <View className="flex-1 bg-stone-900">
@@ -90,7 +104,7 @@ export default function HomeScreen() {
         </View>
 
         {/* suggested videos */}
-        <VideoCard video={videos[3]} />
+        <VideoCard video={videos[randomNum]} /> 
 
         {/* short videos */}
         <View className="mt-2 mb-6 py-4 border-t-zinc-700 border-b-zinc-700 border-2 border-l-0 border-r-0">
@@ -110,7 +124,7 @@ export default function HomeScreen() {
 
         </View>
 
-        {/* videos part 2*/}
+        {/* videos */}
         <ScrollView>
           {
             videos.map((video, index) => <VideoCard video={video} key={index}/>)

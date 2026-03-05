@@ -1,22 +1,27 @@
 import axios from 'axios';
+import { rapidApiKey } from '../constants/index';
 
-const options = {
-  method: 'GET',
-  url: 'https://yt-api.p.rapidapi.com/trending',
-  params: {
-    geo: 'US',
-    type: 'now'
-  },
-  headers: {
-    'x-rapidapi-key': 'b6bb12dc84mshd0b16eeac649dfcp1b8a60jsn9e86e48eb03a',
-    'x-rapidapi-host': 'yt-api.p.rapidapi.com',
-    'Content-Type': 'application/json'
-  }
-};
+export const fetchTrendingVideos = async (params) => {
+    const options = {
+        method: 'GET',
+        url: 'https://yt-api.p.rapidapi.com/trending',
+        params: {
+            geo: 'US',
+            type: 'now',
+            ...params
+        },
+        headers: {
+            'x-rapidapi-key': rapidApiKey,
+            'x-rapidapi-host': 'yt-api.p.rapidapi.com',
+            'Content-Type': 'application/json'
+        }
+    };
 
-try {
-	const response = await axios.request(options);
-	console.log(response.data);
-} catch (error) {
-	console.error(error);
+    try {
+        const response = await axios.request(options);
+        return response.data.data;
+    } catch (error) {
+        console.log('Error: ', error);
+        return [];
+    }
 }
